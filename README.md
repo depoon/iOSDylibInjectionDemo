@@ -1,4 +1,4 @@
-# H1 iOS Dylib Patching Demo
+# iOS Dylib Patching Demo
 
 This repository serve as a tool to teach iOS Developers how to patch Ipa files using dynamic libraries
 
