@@ -17,4 +17,4 @@ This repository serve as a tool to teach iOS Developers how to patch Ipa files u
 ```
 6. You will see an output file called "cracked-patch.ipa". Use Cydia Impactor (http://www.cydiaimpactor.com) to install the new ipa into your device 
 
-## This repository was inspired by the work of https://github.com/bamtan/PokemonGoAnywhere
+#### This repository was inspired by the work of https://github.com/bamtan/PokemonGoAnywhere
