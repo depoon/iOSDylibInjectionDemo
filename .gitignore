@@ -1,0 +1,4 @@
+
+.patchapp.cache/**
+Dylib/**
+*.ipa
