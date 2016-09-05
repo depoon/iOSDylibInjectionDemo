@@ -1,6 +1,6 @@
 # iOS Dylib Patching Demo
 
-This repository serve as a tool to teach iOS Developers how to patch Ipa files using dynamic libraries
+This repository serve as a tool to teach iOS Developers how to inject using dynamic libraries into Ipa Files
 
 ## Main Components (included)
 - [optool](https://github.com/alexzielenski/optool)
