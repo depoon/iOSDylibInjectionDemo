@@ -8,10 +8,17 @@ This repository serve as a tool to teach iOS Developers how to inject using dyna
 
 ## How to patch a ipa file
 1. Download a cracked ipa. (eg. https://www.iphonecake.com)
-2. Use Xcode to create an iOS Dynamic Framework. Build the framework target for iphoneos (non-iphonesimulator)
+2. Use Xcode to create an iOS Dynamic Framework (see below as an example). Build the framework target for iphoneos (non-iphonesimulator)
 3. Reveal the framework in finder and locate the dynamic library binary.
 4. Copy the dynamic library binary file and any depedent dylibs into a folder (lets call it DYLIBS). You may need additional XCode stock swift dylib which you can find them at ```/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift```. Copy any required swift dylib into the DYLIBS folder
 5. Go to the root level of this repository and run ```sh ./patchapp.sh cracked.ipa ./DYLIBS```
 6. You will see an output file called "cracked-patch.ipa". Use Cydia Impactor (http://www.cydiaimpactor.com) to sign the new and install it into your device.
 
 #### This repository was inspired by the work of https://github.com/bamtan/PokemonGoAnywhere
+
+## Dynamic Library XCode Project Demo
+1. An example XCode Project is located in the `PokemonGoHacking` folder  
+2. Dynamic Library target contains codes that help to do the following  
+  - PatchLoader.m attempts to initialize code upon loading into memory but before the application starts  
+  - PatchManager intercepts the UIWindow and adds customized subviews and controls
+  - LocationSwizzler performs the necessary swizzling to alter behavior in the original application
