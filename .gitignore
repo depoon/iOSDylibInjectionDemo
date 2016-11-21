@@ -2,3 +2,6 @@
 .patchapp.cache/**
 Dylibs/**
 *.ipa
+
+PokemonGoHacking/build/**
+PokemonGoHacking/DerivedData/**
