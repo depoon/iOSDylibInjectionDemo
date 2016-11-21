@@ -1,4 +1,4 @@
 
 .patchapp.cache/**
-Dylib/**
+Dylibs/**
 *.ipa
