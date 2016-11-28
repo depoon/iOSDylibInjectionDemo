@@ -16,9 +16,3 @@ This repository serve as a tool to teach iOS Developers how to inject using dyna
 
 #### This repository was inspired by the work of https://github.com/bamtan/PokemonGoAnywhere
 
-## Dynamic Library XCode Project Demo
-1. An example XCode Project is located in the `PokemonGoHacking` folder  
-2. Dynamic Library target contains codes that help to do the following  
-  - PatchLoader.m attempts to initialize code upon loading into memory but before the application starts  
-  - PatchManager intercepts the UIWindow and adds customized subviews and controls
-  - LocationSwizzler performs the necessary swizzling to alter behavior in the original application
