@@ -31,14 +31,14 @@ function copy_dylib_and_load {
 
 	# copy the files into the .app folder
 	echo '[+] Copying .dylib dependences into "'$TMPDIR/Payload/$APP'"'
-	cp -rf $DYLIB_FOLDER $TMPDIR/Payload/$APP/Dylibs
+	cp -rf $DYLIB_FOLDER "$TMPDIR/Payload/$APP/Dylibs"
 
 	# re-sign Frameworks, too
 	echo "APPDIR=$APPDIR"
-	for file in `ls -1 $APPDIR/Dylibs`; do
+	for file in `ls -1 "$APPDIR"/Dylibs`; do
 		echo -n '     '
 		echo "Install Load: $file -> @executable_path/Dylibs/$file"
-		$OPTOOL install -c load -p "@executable_path/Dylibs/$file" -t $APPDIR/$APP_BINARY >& /dev/null
+		$OPTOOL install -c load -p "@executable_path/Dylibs/$file" -t "$APPDIR/$APP_BINARY" >& /dev/null
 	done
 
 
