@@ -26,7 +26,7 @@ USAGE
 #
 #
 
-function copy_dylib_and_load {
+function copy_library_and_load {
 	
 
 	# copy the files into the .app folder
@@ -36,11 +36,14 @@ function copy_dylib_and_load {
 	# re-sign Frameworks, too
 	echo "APPDIR=$APPDIR"
 	for file in `ls -1 "$APPDIR"/Dylibs`; do
-		echo -n '     '
-		echo "Install Load: $file -> @executable_path/Dylibs/$file"
-		$OPTOOL install -c load -p "@executable_path/Dylibs/$file" -t "$APPDIR/$APP_BINARY" >& /dev/null
-	done
 
+		if [[ "$file" == *.framework ]]
+		then
+		    copy_framework_and_load "$file"
+		else
+		    copy_dylib_and_load "$file"
+		fi
+	done
 
 	#--------
 
@@ -51,6 +54,18 @@ function copy_dylib_and_load {
 	chmod +x "$APPDIR/$APP_BINARY"
 }
 
+function copy_framework_and_load {
+	framework=$1
+	frameworkDylib=${framework%.framework}
+	copy_dylib_and_load "$framework/$frameworkDylib"
+}
+
+function copy_dylib_and_load {
+	dylib=$1
+	echo -n '     '
+	echo "Install Load: $file -> @executable_path/Dylibs/$dylib"
+	$OPTOOL install -c load -p "@executable_path/Dylibs/$dylib" -t "$APPDIR/$APP_BINARY" >& /dev/null
+}
 
 
 #
@@ -126,7 +141,7 @@ function ipa_patch {
 		exit 1
 	fi
 
-	copy_dylib_and_load
+	copy_library_and_load
 
 	cd $TMPDIR
 	
